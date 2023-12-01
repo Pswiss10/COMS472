@@ -1,0 +1,30 @@
+a. Alpha-Beta Agent:
+
+Search Depth:
+Increasing the search depth in the alpha-beta agent will lead to a more thorough exploration of the game tree. A deeper search allows the agent to anticipate opponent moves and potential future states, resulting in a better-informed decision. However, increasing the search depth also comes with an exponential increase in computation time, making it a trade-off between computational resources and improved decision-making. Because of this fact, my algorithm only goes about 10 layers deep as the computer would take too long to choose a move otherwise
+
+Evaluation Function:
+Improving the evaluation function involves changing the heuristic used to evaluate whole game state and not just a win or a lose. For example, a better evaluation function might consider factors like piece mobility, king status, and board control. A well-tailored evaluation function is crucial for the alpha-beta agent to make intelligent decisions. Because of the limited evaluation function of either a win, lose, or draw and the search depth of only 10, the Alpha-Beta Agent is not very good at playing checkers.
+
+b. MCTS Agent:
+
+Choice of 𝐶 (Exploration Constant):
+Theoretical optimal value 𝐶 = √2 is often used in MCTS with the Upper Confidence Bound (UCB) formula. This balance between exploration and exploitation helps the algorithm strike a balance between trying new paths and exploiting known good ones. After changing the optimal 𝐶  to a value of 𝐶 = √25, I found that the agent played slightly better then before. I believe this is because increasing the C value broadens the scope of what the agent will try, which allows the agent to find more optimal moves. The downside to this is looking too many paths results in a less accurate "best move" for the agent to take. These are all things to consider when picking a C value for Monte-Carlo Tree Search.
+
+c. Performance Comparison:
+
+Alpha-Beta Search:
+	Strengths: Well-suited for deterministic, adversarial games. Can perform deep searches and make informed decisions.
+	Weaknesses: Computationally expensive for large search spaces. May struggle in games with complex branching factors.
+
+MCTS:
+	Strengths: Effective in games with uncertainty and complex decision spaces. Much faster then Alpha-Beta
+	Weaknesses: May require tuning for optimal performance. Computationally demanding, especially in the early stages of learning.
+
+Hybrid Agent:
+
+Combining alpha-beta search and MCTS will give the strengths of both approaches while minimizing each's individual weaknesses. Alpha-beta provides precise evaluations in deeper searches, while MCTS explores the decision space more broadly. The hybrid approach is perfect for finding the balance between accuracy and adaptability for an AI agent to make an effective move.
+
+Overall Performance:
+
+Between all of my implementations of these agents, I think MonteCarlo Tree Search had the best performance. It was able to make descions relatively quickly and make smart moves. This allowed for a competitive game between me and the agent. It was also the best algorthim because Alpha beta could not go all the way down the tree to come back the best move. If I left an unspecified cuttoff depth, the agent would spend a LONG time desciding a move. So long that it never was able to take a move after 5 mins of waiting. So I had to add max depth to in order for the agent to compute a move. Because of the depth and the simplistic evalutaion function, the AlphaBetta algorithm just makes the first possible move instead of the most optimal. If given enough time and no max depth, I think Alpha-Beta would perform better then Monte-Carlo Tree Search. But thats not the case, so monteCarlo wins.
